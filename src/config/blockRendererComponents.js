@@ -4,13 +4,23 @@ import {
   getClasses,
   getStyles,
 } from "@webdeveducation/wp-block-tools";
-import { CallToActionButton, MediaText, Cover } from "../components";
+import { CallToActionButton, MediaText, Cover, TickItem } from "../components";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 export const blockRendererComponents = (block) => {
   switch (block.name) {
+    case "tgg/carprice": {
+      console.log("car price ", block);
+      return null;
+    }
+    case "tgg/tickitem": {
+      return (
+        <TickItem key={block.id}>
+          <BlockRenderer blocks={block.innerBlocks} />
+        </TickItem>
+      );
+    }
     case "core/cover": {
-      console.log("cover data ", block);
       return (
         <Cover
           key={block.id}

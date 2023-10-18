@@ -4,14 +4,46 @@ import {
   getClasses,
   getStyles,
 } from "@webdeveducation/wp-block-tools";
-import { CallToActionButton, MediaText, Cover, TickItem } from "../components";
+import {
+  CallToActionButton,
+  MediaText,
+  Cover,
+  TickItem,
+  CarSearch,
+  ContactForm7,
+} from "../components";
 import { GatsbyImage } from "gatsby-plugin-image";
+import numeral from "numeral";
 
 export const blockRendererComponents = (block) => {
   switch (block.name) {
+    case "contact-form-7/contact-form-selector": {
+      return (
+        <ContactForm7
+          key={block.id}
+          formId={block.attributes.id}
+          formMarkup={block.attributes.formMarkup
+            .replace('novalidate="novalidate"', "")
+            .split('aria-required="true"')
+            .join('aria-required="true" required')}
+        />
+      );
+    }
+    case "tgg/carsearch": {
+      return (
+        <CarSearch
+          key={block.id}
+          style={getStyles(block)}
+          className={getClasses(block)}
+        />
+      );
+    }
     case "tgg/carprice": {
-      console.log("car price ", block);
-      return null;
+      return (
+        <div className="bg-black py-6 text-center font-heading text-3xl text-white">
+          £ {numeral(block.attributes.price).format("")}
+        </div>
+      );
     }
     case "tgg/tickitem": {
       return (

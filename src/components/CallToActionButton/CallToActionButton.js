@@ -1,11 +1,18 @@
 import { Link } from "gatsby";
 import React from "react";
 
-export const CallToActionButton = ({ label, destination }) => {
+export const CallToActionButton = ({
+  label,
+  destination,
+  fullWidth,
+  isActive,
+}) => {
   return (
     <Link
       to={destination}
-      className="inline-block cursor-pointer rounded-sm bg-yellow-500 px-4 py-2 font-bold uppercase !text-black no-underline transition-colors hover:bg-yellow-400"
+      className={`${isActive ? "cursor-default bg-yellow-600" : ""} ${
+        fullWidth ? "block" : "inline-block"
+      } btn`}
     >
       {label}
     </Link>

@@ -46,6 +46,23 @@
   li {
     list-style-type: disc;
   }
+  input,
+  select,
+  textarea {
+    @apply w-full rounded-sm border border-slate-600 px-4 py-2;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply cursor-pointer rounded-sm bg-yellow-500 px-4 py-2 text-center font-bold uppercase !text-black no-underline transition-colors hover:bg-yellow-400;
+  }
+}
+
+.wpcf7-form {
+  input[type="submit"] {
+    @apply btn border-none;
+  }
 }
 
 .wp-site-blocks {
